@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CardComponent from "./ui/Card";
 import SkeletonComponent from "./ui/Skeleton";
+import { Divider, Button,Link } from "@nextui-org/react";
 
 interface Company {
   id: string;
@@ -45,6 +46,25 @@ export default function Home() {
 
   return (
     <div>
+      <div className="mb-[2rem]">
+        <div className="flex justify-center mt-[5rem]">
+          <h1 className="text-5xl font-bold">What's Open Source Alternative</h1>
+        </div>
+        <div className="flex justify-center">
+          <p className="text-2xl mt-4 text-default-500">
+            Discover open source alternatives to popular software
+          </p>
+        </div>
+        <div className="mt-12 mb-5 flex justify-center">
+          <Button as={Link} color="default" href="/" variant="flat" size="lg">
+            Submit your Project
+          </Button>      
+          </div>
+      </div>
+
+      <Divider className="my-4" />
+
+
       {loading ? (
         <div className="grid grid-cols-3 gap-4">
           <SkeletonComponent />
