@@ -19,8 +19,16 @@ export default function CardComponent(props: CardProps) {
   };
 
   return (
-    <Card className="w-80 py-4 mx-auto my-4">
-      <CardHeader className="pb-4 pt-2 px-4 flex-col items-start">
+    <Card className="w-80 pt-4 mx-auto my-4">
+      <div className="flex justify-center">
+        <Image
+          alt="Card background"
+          className="object-cover w-full rounded-xl"
+          src={props.imageUrl}
+          width={150}
+        />
+      </div>
+      <CardHeader className="pb-4 mt-2 pt-2 px-4 flex-col items-start">
         <p className="text-tiny uppercase font-bold">
           {props.closedSrcName}'s alternative
         </p>
@@ -28,9 +36,8 @@ export default function CardComponent(props: CardProps) {
         <small className="text-default-500">
           {showFullText
             ? props.description
-            : `${props.description.slice(0, 100)}${
-                props.description.length > 100 ? "..." : ""
-              }`}
+            : `${props.description.slice(0, 100)}${props.description.length > 100 ? "..." : ""
+            }`}
           <span
             className="text-primary cursor-pointer"
             onClick={toggleShowFullText}
@@ -40,14 +47,6 @@ export default function CardComponent(props: CardProps) {
         </small>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
-        <div className="flex justify-center">
-          <Image
-            alt="Card background"
-            className="object-cover rounded-xl"
-            src={props.imageUrl}
-            width={150}
-          />
-        </div>
       </CardBody>
       <div className="flex justify-between px-4 pb-4">
         <a
@@ -56,17 +55,22 @@ export default function CardComponent(props: CardProps) {
           rel="noopener noreferrer"
           className="btn btn-primary btn-sm"
         >
-          Try
+          <div className="text-3xl">
+            <i className="ti ti-link"></i>
+          </div>
         </a>
+
         <a
           href={props.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary btn-sm"
         >
-          Github
+          <div className="text-3xl">
+            <i className="ti ti-brand-github"></i>
+          </div>
         </a>
       </div>
     </Card>
-  );
+  )
 }
