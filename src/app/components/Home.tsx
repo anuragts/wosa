@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CardComponent from "./ui/Card";
 import SkeletonComponent from "./ui/Skeleton";
-import { Divider, Button,Link } from "@nextui-org/react";
+import { Divider, Button, Link } from "@nextui-org/react";
+import StartBtn from "./ui/Start";
 
 interface Company {
   id: string;
@@ -32,11 +33,11 @@ export default function Home() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get<Company[]>('/api/post/getAll');
+        const response = await axios.get<Company[]>("/api/post/getAll");
         setData(response.data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setLoading(false);
       }
     };
@@ -56,14 +57,11 @@ export default function Home() {
           </p>
         </div>
         <div className="mt-12 mb-5 flex justify-center">
-          <Button as={Link} color="default" href="/" variant="flat" size="lg">
-            Submit your Project
-          </Button>      
-          </div>
+          <StartBtn />
+        </div>
       </div>
 
       <Divider className="my-4" />
-
 
       {loading ? (
         <div className="grid grid-cols-3 gap-4">
